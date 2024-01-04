@@ -1,4 +1,4 @@
-﻿namespace _3OcakCalismam
+﻿namespace _OrnekSoruCozumleri
 {
     internal class Program
     {

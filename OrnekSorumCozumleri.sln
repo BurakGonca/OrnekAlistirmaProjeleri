@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3OcakCalismam", "3OcakCalismam\3OcakCalismam.csproj", "{D12F48BD-55E0-43AE-92BB-8D32379854C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ornek Algoritma Sorulari", "3OcakCalismam\Ornek Algoritma Sorulari.csproj", "{D12F48BD-55E0-43AE-92BB-8D32379854C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{CF5DF959-D945-4A30-B3D5-55293BDFCC77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{CF5DF959-D945-4A30-B3D5-55293BDFCC77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
