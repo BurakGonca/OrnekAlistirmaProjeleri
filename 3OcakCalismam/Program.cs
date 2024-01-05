@@ -4,12 +4,93 @@
     {
         static void Main(string[] args)
         {
+            #region 3ocak
+
             //Soru15();
             //Soru16();
             //Soru17();
             //Soru18();
             //Soru19();
-            Soru20();
+            //Soru20();
+
+            #endregion 
+
+            //---------------//
+
+            #region 5ocak
+            //Soru22();
+            //Soru24();
+            //Soru25();
+            
+
+            #endregion
+        }
+
+        
+
+        private static void Soru25()
+        {
+            int input, a, b, c;
+            Console.Write("A sayisini giriniz: ");
+            while (!int.TryParse(Console.ReadLine(), out input) || input <= 0)
+            {
+                Console.Write("A sayisi icin lütfen pozitif bir tam sayi giriniz: ");
+            }
+            a = input;
+            Console.Write("B sayisini giriniz: ");
+            while (!int.TryParse(Console.ReadLine(), out input) || input <= 0)
+            {
+                Console.Write("B sayisi icin lütfen pozitif bir tam sayi giriniz: ");
+            }
+            b = input;
+            if (a > 50 || b > 50)
+            {
+                c = a + b;
+                Console.WriteLine("c = " + c);
+            }
+            else Console.WriteLine("Bu sayilar uygun degil");
+
+
+
+        }
+
+        private static void Soru24()
+        {
+            int i, toplam = 0;
+
+            for (i = 0; i <= 500; i++)
+            {
+                toplam += i;
+            }
+            Console.WriteLine("1'den 500'e tam sayilarin toplami: " + toplam);
+        }
+
+        private static void Soru22()
+        {
+            int giris, üs, sayi;
+            int temp = 1;
+            Console.Write("Lütfen sayiyi giriniz: ");
+            while (!int.TryParse(Console.ReadLine(), out giris) || giris <= 0)
+            {
+                Console.Write("Lütfen pozitif tam sayi giriniz: ");
+            }
+            sayi = giris;
+
+            Console.Write("Lütfen üssü giriniz: ");
+            while (!int.TryParse(Console.ReadLine(), out giris) || giris <= 0)
+            {
+                Console.Write("Lütfen üs icin pozitif tam sayi giriniz: ");
+            }
+            üs = giris;
+
+            while (üs > 0)
+            {
+                temp *= sayi;
+                üs--;
+            }
+            üs = giris;
+            Console.WriteLine("Girilen sayi: {0}, girilen üs: {1}, üs sonucu: {2}", sayi, üs, temp);
+
         }
 
         static void Soru15()
