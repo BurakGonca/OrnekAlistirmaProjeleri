@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ornek Algoritma Sorulari", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{CF5DF959-D945-4A30-B3D5-55293BDFCC77}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Günlük Kosu Mesafesi Ölçer", "Günlük Kosu Mesafesi Ölçer\Günlük Kosu Mesafesi Ölçer.csproj", "{5D89B143-56F8-4F87-ADB1-D2C7116FAF78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CF5DF959-D945-4A30-B3D5-55293BDFCC77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF5DF959-D945-4A30-B3D5-55293BDFCC77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF5DF959-D945-4A30-B3D5-55293BDFCC77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D89B143-56F8-4F87-ADB1-D2C7116FAF78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D89B143-56F8-4F87-ADB1-D2C7116FAF78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D89B143-56F8-4F87-ADB1-D2C7116FAF78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D89B143-56F8-4F87-ADB1-D2C7116FAF78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
