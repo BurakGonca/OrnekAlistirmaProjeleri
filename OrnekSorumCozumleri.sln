@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Günlük Kosu Mesafesi Öl�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XOX Oyunu", "XOX Oyunu\XOX Oyunu.csproj", "{A3A1EE6B-6DEC-46E2-8A0C-B1F9C69B32C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kelime Tahmin Oyunu", "Kelime Tahmin Oyunu\Kelime Tahmin Oyunu.csproj", "{4D01518E-071A-4FFD-8A27-1A53FE6320C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kelime Tahmin Oyunu", "Kelime Tahmin Oyunu\Kelime Tahmin Oyunu.csproj", "{4D01518E-071A-4FFD-8A27-1A53FE6320C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP-Ornek Ogrenci Calisma", "OOP-Ornek Ogrenci Calisma\OOP-Ornek Ogrenci Calisma.csproj", "{1BE88169-C60E-4695-AB7D-A9103F043FE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{4D01518E-071A-4FFD-8A27-1A53FE6320C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D01518E-071A-4FFD-8A27-1A53FE6320C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D01518E-071A-4FFD-8A27-1A53FE6320C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BE88169-C60E-4695-AB7D-A9103F043FE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BE88169-C60E-4695-AB7D-A9103F043FE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BE88169-C60E-4695-AB7D-A9103F043FE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BE88169-C60E-4695-AB7D-A9103F043FE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
