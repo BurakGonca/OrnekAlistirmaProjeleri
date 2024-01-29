@@ -15,7 +15,6 @@ namespace SinemaKonsolUygulamasi_OOP_Ornek
             TamBiletFiyati = tamBiletFiyati;
             YarimBiletFiyati = yarimBiletFiyati;
 
-
         }
 
         public string FilmAdi { get; set; }
@@ -23,23 +22,44 @@ namespace SinemaKonsolUygulamasi_OOP_Ornek
         public int TamBiletFiyati { get; set; }
         public int YarimBiletFiyati { get; set; }
 
+
         public short TamBiletAdeti { get; set; }
         public short YarimBiletAdeti { get; set; }
+        public float Ciro
+        {
+            get { return this.TamBiletAdeti * this.TamBiletFiyati + this.YarimBiletAdeti * this.YarimBiletFiyati; }
 
-        public short BosKoltukSayisi()
+        }
+
+
+        public short BosKoltukHesaplama()
         {
             return (short)(this.Kapasite - this.TamBiletAdeti - this.YarimBiletAdeti);
         }
 
-        public float Ciro()
+
+        public void BiletSat(short _tamBilet, short _yarimBilet)
         {
-            return (float)(this.TamBiletAdeti * this.TamBiletFiyati) + (this.YarimBiletAdeti * this.YarimBiletFiyati);
+            if (_tamBilet + _yarimBilet <= BosKoltukHesaplama())
+            {
+                this.TamBiletAdeti += _tamBilet;
+                this.YarimBiletAdeti += _yarimBilet;
+                Console.WriteLine("İslem gerceklestirildi");
+            }
+            else Console.WriteLine(BosKoltukHesaplama() + " adet bos koltuk oldugundan isleminiz gerceklestirilemiyor");
         }
 
+        public void BiletIade(short _tamBilet, short _yarimBilet)
+        {
+            if (_tamBilet <= TamBiletAdeti && _yarimBilet <= YarimBiletAdeti)
+            {
+                this.TamBiletAdeti -= _tamBilet;
+                this.YarimBiletAdeti -= _yarimBilet;
+                Console.WriteLine("İslem gerceklestirildi");
 
-
-
-
+            }
+            else Console.WriteLine("Satılmış bilet adetinden fazla iade işlemi yapılamaz.");
+        }
 
 
     }

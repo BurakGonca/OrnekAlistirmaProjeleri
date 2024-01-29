@@ -3,8 +3,8 @@
     internal class Program
     {
         static Sinema snm;
-        static short bosKoltukSayisi;
-        static float ciro;
+
+
 
         static void Main(string[] args)
         {
@@ -50,44 +50,38 @@
             Console.WriteLine($"Yarım Bilet Fiyatı:           : {snm.YarimBiletFiyati} ");
             Console.WriteLine($"Toplam Tam Bilet Adeti:       : {snm.TamBiletAdeti} ");
             Console.WriteLine($"Toplam Yarım Bilet Adeti:     : {snm.YarimBiletAdeti} ");
-            Console.WriteLine($"Ciro:                         : {ciro} ");
-            Console.WriteLine($"Boş Koltuk Adeti:             : {bosKoltukSayisi} ");
-            Console.WriteLine("\nAna menüye yonlendiriliyorsunuz");
-            Thread.Sleep(5000);
+            Console.WriteLine($"Ciro:                         : {snm.Ciro} ");
+            Console.WriteLine($"Boş Koltuk Adeti:             : {snm.BosKoltukHesaplama()} ");
+            MenuYonlendirme();
 
         }
+
+
 
         private static void BiletIadesi()
         {
             Console.WriteLine("---Bilet İade---");
-            Console.Write("Tam Bilet adeti: ");
-            short tamBiletAdeti = short.Parse(Console.ReadLine());
-            Console.Write("\nYarim Bilet adeti: ");
-            short yarimBiletAdeti = short.Parse(Console.ReadLine());
+            short tamBiletAdeti, yarimBiletAdeti;
 
-            bosKoltukSayisi = (short)(snm.BosKoltukSayisi() + tamBiletAdeti + yarimBiletAdeti);
-            ciro = (float)(snm.Ciro() - (tamBiletAdeti * snm.TamBiletFiyati) - (yarimBiletAdeti * snm.YarimBiletFiyati));
+            BiletAdetiGir(out tamBiletAdeti, out yarimBiletAdeti);
+            snm.BiletIade(tamBiletAdeti, yarimBiletAdeti);
 
             Console.WriteLine("\nBilet iadesi yapildi");
-            Console.WriteLine("\nAna menüye yonlendiriliyorsunuz");
-            Thread.Sleep(3000);
+            MenuYonlendirme();
+
 
         }
 
         private static void BiletSatisi()
         {
             Console.WriteLine("---Bilet Satisi---");
-            Console.Write("\nTam Bilet adeti: ");
-            short tamBiletAdeti = short.Parse(Console.ReadLine());
-            Console.Write("\nYarim Bilet adeti: ");
-            short yarimBiletAdeti = short.Parse(Console.ReadLine());
+            short tamBiletAdeti, yarimBiletAdeti;
 
-            bosKoltukSayisi = (short)(snm.BosKoltukSayisi() - tamBiletAdeti - yarimBiletAdeti);
-            ciro = (float)(snm.Ciro() + (tamBiletAdeti * snm.TamBiletFiyati) + (yarimBiletAdeti * snm.YarimBiletFiyati));
+            BiletAdetiGir(out tamBiletAdeti, out yarimBiletAdeti);
+            snm.BiletSat(tamBiletAdeti, yarimBiletAdeti);
 
             Console.WriteLine("\nBilet satisi yapildi");
-            Console.WriteLine("\nAna menüye yonlendiriliyorsunuz");
-            Thread.Sleep(3000);
+            MenuYonlendirme();
         }
 
         private static void FilmEkleme()
@@ -172,13 +166,29 @@
                 else if (tus.Key == ConsoleKey.Enter)
                 {
                     Console.WriteLine("\nÇıkış işlemi iptal edildi");
-                    Console.WriteLine("Ana menüye yönlendiriliyorsunuz");
-                    Thread.Sleep(5000);
+                    MenuYonlendirme();
                     kontrol = false;
                 }
             }
 
         }
+
+        private static void BiletAdetiGir(out short tamBiletAdeti, out short yarimBiletAdeti)
+        {
+            Console.Write("\nTam Bilet adeti: ");
+            tamBiletAdeti = short.Parse(Console.ReadLine());
+            Console.Write("\nYarim Bilet adeti: ");
+            yarimBiletAdeti = short.Parse(Console.ReadLine());
+        }
+
+
+        private static void MenuYonlendirme()
+        {
+            Console.WriteLine("\nAna menüye yonlendiriliyorsunuz");
+            Thread.Sleep(5000);
+        }
+
+
 
     }
 }
