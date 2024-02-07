@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ogrenci Yonetim Ornegi", "O
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SinemaKonsolUygulamasi-OOP Ornek", "SinemaKonsolUygulamasi-OOP Ornek\SinemaKonsolUygulamasi-OOP Ornek.csproj", "{C1CCDBFB-21F6-4E68-A704-3FA404CB4C84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OkulYonetim-OOP-Ornek", "OkulYonetim-OOP-Ornek\OkulYonetim-OOP-Ornek.csproj", "{9D8F585D-5769-4804-91BA-9CE0EF570867}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OkulYonetim-OOP-Ornek", "OkulYonetim-OOP-Ornek\OkulYonetim-OOP-Ornek.csproj", "{9D8F585D-5769-4804-91BA-9CE0EF570867}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OtoGaleri-OOP-OrnekKonsolUygulamasi", "OtoGaleri-OOP-OrnekKonsolUygulamasi\OtoGaleri-OOP-OrnekKonsolUygulamasi.csproj", "{91821789-4BE8-4A73-BABB-5B585EB84751}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{9D8F585D-5769-4804-91BA-9CE0EF570867}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D8F585D-5769-4804-91BA-9CE0EF570867}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D8F585D-5769-4804-91BA-9CE0EF570867}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91821789-4BE8-4A73-BABB-5B585EB84751}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91821789-4BE8-4A73-BABB-5B585EB84751}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91821789-4BE8-4A73-BABB-5B585EB84751}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91821789-4BE8-4A73-BABB-5B585EB84751}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
