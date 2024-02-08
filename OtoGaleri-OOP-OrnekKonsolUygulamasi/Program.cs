@@ -3,126 +3,139 @@ using System.Runtime.CompilerServices;
 
 namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
 {
+    
     internal class Program
     {
+        static Galeri galeri = new Galeri();
         static void Main(string[] args)
         {
-            Calistir();
-
-
-            
            
-
-
+            Calistir();
+            
         }
-
         public static void Calistir()
         {
-            Menu();
-
-            switch (SecimAl())
+            galeri.SahteVeriEkle();
+            bool kontrol = true;
+            while (kontrol)
             {
-                case "1":
-                case "K":
-                    ArabaKirala();
-                    break;
-                case "2":
-                case "T":
-                    ArabaTeslimAl();
-                    break;
-                case "3":
-                case "R":
-                    KiradakiArabalariListele();
-                    break;
-                case "4":
-                case "M":
-                    GaleridekiArabalariListele();
-                    break;
-                case "5":
-                case "A":
-                    TümArabalariListele();
-                    break;
-                case "6":
-                case "I":
-                    KiralamaIptali();
-                    break;
-                case "7":
-                case "Y":
-                    ArabaEkle();
-                    break;
-                case "8":
-                case "S":
-                    ArabaSil();
-                    break;
-                case "9":
-                case "G":
-                    BilgileriGoster();
-                    break;
-                default:
+                Menu();
+                switch (SecimAl())
+                {
+                    case "1":
+                    case "K":
+                        ArabaKirala();
+                        break;
+                    case "2":
+                    case "T":
+                        ArabaTeslimAl();
+                        break;
+                    case "3":
+                    case "R":
+                        KiradakiArabalariListele();
+                        break;
+                    case "4":
+                    case "M":
+                        GaleridekiArabalariListele();
+                        break;
+                    case "5":
+                    case "A":
+                        TümArabalariListele();
+                        break;
+                    case "6":
+                    case "I":
+                        KiralamaIptali();
+                        break;
+                    case "7":
+                    case "Y":
+                        ArabaEkle();
+                        break;
+                    case "8":
+                    case "S":
+                        ArabaSil();
+                        break;
+                    case "9":
+                    case "G":
+                        BilgileriGoster();
+                        break;
+                    case "10":
+                    case "X":
+                        kontrol = false;
+                        break;
+                    default:
 
-                    Console.WriteLine("Hatalı işlem gerçekleştirildi. Tekrar deneyin.");
-                    break;
+                        Console.WriteLine("Hatalı işlem gerçekleştirildi. Tekrar deneyin.");
+                        break;
+                }
             }
-
             
+
         }
-
-        
-
-      
 
         private static void ArabaTeslimAl()
         {
             throw new NotImplementedException();
         }
-
         private static void BilgileriGoster()
         {
             throw new NotImplementedException();
         }
-
         private static void ArabaSil()
         {
             throw new NotImplementedException();
         }
-
         private static void ArabaEkle()
         {
-            Galeri galeri = new Galeri("06BR5691", "Honda", 200);
-            List<Araba> arabaListesi = new List<Araba>();
-            Araba opel = new Araba("06BR5691","Honda",200,Araba.ArabaTip.Hatchback);
-            galeri.ArabaEkle(arabaListesi,opel);
+            Console.Write("Plaka: ");
+            string plaka  = Console.ReadLine();
+            Console.Write("\nMarka: ");
+            string marka= Console.ReadLine();
+            Console.Write("\nKiralama Bedeli: ");
+            int kiralamaBedeli=int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Araba Tipi (1: SUV, 2: Hatchback, 3: Sedan): ");
+            byte secim = byte.Parse(Console.ReadLine());
+            Araba.ArabaTip arabaTipi = Araba.ArabaTip.Sedan;
+            switch (secim)
+            {
+                case 1:
+                    arabaTipi = Araba.ArabaTip.SUV;
+                    break;
+                case 2:
+                    arabaTipi = Araba.ArabaTip.Hatchback;
+                    break;
+                case 3:
+                    arabaTipi = Araba.ArabaTip.Sedan;
+                    break;
+                default:
+                    Console.WriteLine("Yanlis Araba Tipi Secimi Yaptiniz.");
+                    break;
+            }
+            
+            Araba yeniAraba = new Araba(plaka,marka,kiralamaBedeli,arabaTipi);
+            galeri.GaleriArabaEkle(yeniAraba);
 
         }
-
         private static void KiralamaIptali()
         {
             throw new NotImplementedException();
         }
-
         private static void TümArabalariListele()
         {
-            throw new NotImplementedException();
+            galeri.TumArabalariListele();
         }
-
         private static void GaleridekiArabalariListele()
         {
-            throw new NotImplementedException();
+            galeri.GaleridekiArabalariListele();
         }
-
         private static void KiradakiArabalariListele()
         {
-            throw new NotImplementedException();
+            galeri.KiradakiArabalariListele();
         }
-
         private static void ArabaKirala()
         {
-            
-            
-            
-
+           
         }
-
         private static void Menu()
         {
             Console.WriteLine("1 - Araba Kirala(K)");
@@ -134,6 +147,7 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
             Console.WriteLine("7 - Araba Ekle(Y)");
             Console.WriteLine("8 - Araba Sil(S)");
             Console.WriteLine("9 - Bilgileri Göster(G)");
+            Console.WriteLine("10 - Cikis Yap(X)");
         }
         public static string SecimAl()
         {
@@ -145,7 +159,7 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
                 if (secim=="1" || secim == "2" || secim == "3" || secim == "4" || secim == "5"
                     || secim == "6" || secim == "7" || secim == "8" || secim == "9" || secim == "K"
                     || secim == "T" || secim == "R" || secim == "M" || secim == "A" || secim == "I"
-                    || secim == "Y" || secim == "S" || secim == "G" ) break;
+                    || secim == "Y" || secim == "S" || secim == "G" || secim == "X" || secim == "10") break;
 
                 else
                 {
@@ -156,7 +170,6 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
             return secim;
         }
 
-        
 
     }
 }
