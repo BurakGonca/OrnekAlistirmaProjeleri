@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.Design;
+using System.Runtime.CompilerServices;
 
 namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
 {
@@ -7,16 +8,23 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
         static void Main(string[] args)
         {
             Calistir();
+
+
+            
+           
+
+
         }
 
         public static void Calistir()
         {
             Menu();
+
             switch (SecimAl())
             {
                 case "1":
                 case "K":
-                    ArabaTeslimAl();
+                    ArabaKirala();
                     break;
                 case "2":
                 case "T":
@@ -56,7 +64,16 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
                     break;
             }
 
+            
+        }
 
+        
+
+      
+
+        private static void ArabaTeslimAl()
+        {
+            throw new NotImplementedException();
         }
 
         private static void BilgileriGoster()
@@ -71,7 +88,11 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
 
         private static void ArabaEkle()
         {
-            throw new NotImplementedException();
+            Galeri galeri = new Galeri("06BR5691", "Honda", 200);
+            List<Araba> arabaListesi = new List<Araba>();
+            Araba opel = new Araba("06BR5691","Honda",200,Araba.ArabaTip.Hatchback);
+            galeri.ArabaEkle(arabaListesi,opel);
+
         }
 
         private static void KiralamaIptali()
@@ -94,9 +115,12 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
             throw new NotImplementedException();
         }
 
-        private static void ArabaTeslimAl()
+        private static void ArabaKirala()
         {
-            throw new NotImplementedException();
+            
+            
+            
+
         }
 
         private static void Menu()
@@ -113,11 +137,26 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
         }
         public static string SecimAl()
         {
-            Console.Write("\nSeciminiz: ");
-            string secim = Console.ReadLine();
+            string secim;
+            while (true)
+            {
+                Console.Write("\nSeciminiz: ");
+                secim = Console.ReadLine().ToUpper();
+                if (secim=="1" || secim == "2" || secim == "3" || secim == "4" || secim == "5"
+                    || secim == "6" || secim == "7" || secim == "8" || secim == "9" || secim == "K"
+                    || secim == "T" || secim == "R" || secim == "M" || secim == "A" || secim == "I"
+                    || secim == "Y" || secim == "S" || secim == "G" ) break;
+
+                else
+                {
+                    Console.WriteLine("\nHatalı işlem gerçekleştirildi. Tekrar deneyin.");
+                    continue;
+                }
+            }
             return secim;
         }
 
+        
 
     }
 }
