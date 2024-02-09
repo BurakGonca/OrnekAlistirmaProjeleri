@@ -13,7 +13,6 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
         private List<Araba> _kiradakiArabaListesi = new List<Araba>();
         private List<Araba> _galeridekiArabaListesi = new List<Araba>();
 
-
         /// <summary>
         /// Tum araba listesi, galerideki arabalar ve kiradaki arabalarin tamamımı kapsamaktadir.
         /// </summary>
@@ -27,19 +26,15 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
                 return tumArabalar;
             }
         }
-
-
         public List<Araba> kiradakiArabaListesi => _kiradakiArabaListesi;
         public List<Araba> galeridekiArabaListesi => _galeridekiArabaListesi;
-
-
         public void TumArabalariListele()
         {
-            Console.WriteLine("\nPlaka".PadRight(11)+"Marka".PadRight(10)+"K.Bedeli".PadRight(12)+"Araba Tipi".PadRight(16)+"K. Sayısı".PadRight(15)+                "Durum".PadRight(10));
+            Console.WriteLine("\nPlaka".PadRight(11) + "Marka".PadRight(10) + "K.Bedeli".PadRight(12) + "Araba Tipi".PadRight(16) + "K. Sayısı".PadRight(15) + "Durum".PadRight(10));
             Console.WriteLine("-----------------------------------------------------------------------");
             foreach (var item in tumArabaListesi)
             {
-                Console.WriteLine(item.Plaka.PadRight(10) + item.Marka.PadRight(10) + item.KiralamaBedeli.ToString().PadRight(12) + item.ArabaTipi.ToString().PadRight(16) + item.KiralamaSayisi.ToString().PadRight(15) + item.ArabaDurumu.ToString().PadRight(10) );
+                Console.WriteLine(item.Plaka.PadRight(10) + item.Marka.PadRight(10) + item.KiralamaBedeli.ToString().PadRight(12) + item.ArabaTipi.ToString().PadRight(16) + item.KiralamaSayisi.ToString().PadRight(15) + item.ArabaDurumu.ToString().PadRight(10));
             }
             Console.WriteLine();
         }
@@ -84,7 +79,13 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
             galeridekiArabaListesi.Add(araba);
             araba.ArabaDurumu = Araba.ArabaDurum.Galeride;
         }
-
+        public void KiralamaIptali(Araba araba)
+        {
+            kiradakiArabaListesi.Remove(araba);
+            galeridekiArabaListesi.Add(araba);
+            araba.ArabaDurumu = Araba.ArabaDurum.Galeride;
+            araba.KiralamaSayisi--;
+        }
         public void SahteVeriEkle()
         {
             Araba fiat = new Araba("06TPN30", "FIAT", 200, Araba.ArabaTip.SUV);
@@ -97,7 +98,6 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
             GaleriArabaEkle(citroen);
             GaleriArabaEkle(opel);
         }
-
     }
 }
 

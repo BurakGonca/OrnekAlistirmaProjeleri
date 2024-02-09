@@ -9,9 +9,7 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
         static Galeri galeri = new Galeri();
         static void Main(string[] args)
         {
-
             Calistir();
-
         }
         public static void Calistir()
         {
@@ -60,32 +58,117 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
                         break;
                     case "10":
                     case "X":
+                        Console.WriteLine("\nCikis yapiliyor");
+                        Thread.Sleep(2000);
                         kontrol = false;
                         break;
                     default:
 
-                        Console.WriteLine("Hatalı işlem gerçekleştirildi. Tekrar deneyin.");
+                        Console.WriteLine("\nHatalı işlem gerçekleştirildi. Tekrar deneyin.");
                         break;
                 }
             }
 
-
         }
-
         private static void ArabaTeslimAl()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("\n-Araba Teslim Al-");
+            Console.Write("\nTeslim edilecek arabanın plakası: ");
+            string plaka = Console.ReadLine();
+
+            Araba teslimAlinacakAraba = null;
+            foreach (Araba araba in galeri.tumArabaListesi)
+            {
+                if (plaka == araba.Plaka)
+                {
+                    teslimAlinacakAraba = araba;
+                    break;
+                }
+            }
+            if (teslimAlinacakAraba != null)
+            {
+                Console.WriteLine("\nPlaka eşleşti");
+                if (teslimAlinacakAraba.ArabaDurumu == Araba.ArabaDurum.Kirada)
+                {
+                    Console.WriteLine($"\n{teslimAlinacakAraba.Plaka} plakalı araba teslim alındı.");
+                    galeri.KiradanAl(teslimAlinacakAraba);
+                }
+                else
+                    Console.WriteLine("\nHatalı giriş yapıldı. Araba zaten galeride.");
+            }
+            else
+                Console.WriteLine("\nAraba bulunamadı!");
         }
         private static void BilgileriGoster()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("\n-Galeri Bilgileri-");
+            Console.WriteLine($"\nToplam araba sayısı: {galeri.tumArabaListesi.Count} ");
+            Console.WriteLine($"Kiradaki araba sayısı: {galeri.kiradakiArabaListesi.Count} ");
+            Console.WriteLine($"Bekleyen araba sayısı: {galeri.galeridekiArabaListesi.Count} ");
+            Console.WriteLine($"Toplam araba kiralama süresi: {ToplamKiralamaSuresiGetir()} ");
+            Console.WriteLine($"Toplam araba kiralama adedi: {KiralamaAdetiGetir()} ");
+            Console.WriteLine($"Ciro: {CiroGetir()} ");
+        }
+        public static int ToplamKiralamaSuresiGetir()
+        {
+            int toplamSure = 0;
+            foreach (var item in galeri.kiradakiArabaListesi)
+            {
+                toplamSure += item.KiralamaSuresi;
+            }
+            return toplamSure;
+        }
+        private static decimal CiroGetir()
+        {
+            decimal ciro = 0;
+            foreach (var item in galeri.kiradakiArabaListesi)
+            {
+                ciro += (item.KiralamaSuresi * item.KiralamaBedeli);
+            }
+            return ciro;
+        }
+        private static int KiralamaAdetiGetir()
+        {
+            int toplamKiralamaAdeti = 0;
+            foreach (var item in galeri.tumArabaListesi)
+            {
+                toplamKiralamaAdeti += item.KiralamaSayisi;
+            }
+            return toplamKiralamaAdeti;
         }
         private static void ArabaSil()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("\n-Araba Sil-");
+            Console.Write("Plaka: ");
+            string plaka = Console.ReadLine();
+
+            Araba silinecekAraba = null;
+            foreach (Araba araba in galeri.tumArabaListesi)
+            {
+                if (plaka == araba.Plaka)
+                {
+                    silinecekAraba = araba;
+                    break;
+                }
+            }
+            if (silinecekAraba != null)
+            {
+                Console.WriteLine("\nPlaka eşleşti");
+                if (silinecekAraba.ArabaDurumu == Araba.ArabaDurum.Galeride)
+                {
+                    Console.WriteLine($"\n{silinecekAraba.Plaka} plakalı araba silindi.");
+                    galeri.GaleriArabaSil(silinecekAraba);
+                }
+                else
+                    Console.WriteLine("\nAraba kirada olduğu için silme işlemi gerçekleştirilemedi.");
+            }
+            else
+                Console.WriteLine("\nGaleriye ait bu plakada bir araba yok.");
+
         }
         private static void ArabaEkle()
         {
+            Console.WriteLine("\n-Araba Ekle-");
             Console.Write("Plaka: ");
             string plaka = Console.ReadLine();
             Console.Write("\nMarka: ");
@@ -118,7 +201,32 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
         }
         private static void KiralamaIptali()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("\n-Kiralama İptali-");
+            Console.Write("\nKiralaması iptal edilecek arabanın plakası: ");
+            string plaka = Console.ReadLine();
+
+            Araba iptalEdilecekAraba = null;
+            foreach (Araba araba in galeri.tumArabaListesi)
+            {
+                if (plaka == araba.Plaka)
+                {
+                    iptalEdilecekAraba = araba;
+                    break;
+                }
+            }
+            if (iptalEdilecekAraba != null)
+            {
+                Console.WriteLine("\nPlaka eşleşti");
+                if (iptalEdilecekAraba.ArabaDurumu == Araba.ArabaDurum.Kirada)
+                {
+                    Console.WriteLine($"\n{iptalEdilecekAraba.Plaka} plakalı araba icin kiralama iptali gerceklestirildi.");
+                    galeri.KiralamaIptali(iptalEdilecekAraba);
+                }
+                else
+                    Console.WriteLine("\nHatalı giriş yapıldı. Araba zaten galeride.");
+            }
+            else
+                Console.WriteLine("\nGaleriye ait bu plakada bir araba yok. Arac bulunamadi");
         }
         private static void TümArabalariListele()
         {
@@ -150,24 +258,24 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
 
             if (kiralanacakAraba != null)
             {
-                Console.WriteLine("Plaka eşleşti");
+                Console.WriteLine("\nPlaka eşleşti");
                 if (kiralanacakAraba.ArabaDurumu == Araba.ArabaDurum.Galeride)
                 {
                     Console.Write("\nKiralanma süresi: ");
                     sbyte kiraSuresi = sbyte.Parse(Console.ReadLine());
                     Console.WriteLine($"\n{kiralanacakAraba.Plaka} plakalı araba {kiraSuresi} saatliğine kiralandı.");
                     galeri.KirayaVer(kiralanacakAraba);
+                    kiralanacakAraba.KiralamaSuresi=kiraSuresi;
                 }
                 else
-                    Console.WriteLine("Araba şu anda kirada. Farklı araba seçiniz.");
+                    Console.WriteLine("\nAraba şu anda kirada. Farklı araba seçiniz.");
             }
             else
-                Console.WriteLine("Araba bulunamadı!");
+                Console.WriteLine("\nAraba bulunamadı!");
         }
-
         private static void Menu()
         {
-            Console.WriteLine("1 - Araba Kirala(K)");
+            Console.WriteLine("\n1 - Araba Kirala(K)");
             Console.WriteLine("2 - Araba Teslim Al(T)");
             Console.WriteLine("3 - Kiradaki Arabaları Listele(R)");
             Console.WriteLine("4 - Galerideki Arabaları Listele(M)");
@@ -198,7 +306,6 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
             }
             return secim;
         }
-
 
     }
 }

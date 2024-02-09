@@ -11,7 +11,6 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
         private string _Plaka;
         private string _Marka;
         private int _KiralamaBedeli;
-        private ushort _KiralamaSayisi;
         private ArabaTip _ArabaTipi;
 
         public Araba(string plaka, string marka, int kiralamaBedeli, ArabaTip arabaTipi)
@@ -21,13 +20,12 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
             _KiralamaBedeli = kiralamaBedeli;
             _ArabaTipi = arabaTipi;
             ArabaDurumu = ArabaDurum.Galeride;
-            _KiralamaSayisi = 0;
         }
-
         public string Plaka => _Plaka;
         public string Marka => _Marka;
         public int KiralamaBedeli => _KiralamaBedeli;
-        public ushort KiralamaSayisi { get; set; }
+        public int KiralamaSayisi { get; set; }
+        public int KiralamaSuresi { get; set; }
         public ArabaTip ArabaTipi => _ArabaTipi;
         public ArabaDurum ArabaDurumu { get; set; }
         public enum ArabaTip
@@ -41,8 +39,5 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
             Kirada,
             Galeride
         }
-        
-        
-
     }
 }
