@@ -12,42 +12,77 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
         private List<Araba> _tumArabaListesi = new List<Araba>();
         private List<Araba> _kiradakiArabaListesi = new List<Araba>();
         private List<Araba> _galeridekiArabaListesi = new List<Araba>();
-        
+
+
+        /// <summary>
+        /// Tum araba listesi, galerideki arabalar ve kiradaki arabalarin tamamımı kapsamaktadir.
+        /// </summary>
+        public List<Araba> tumArabaListesi
+        {
+            get
+            {
+                List<Araba> tumArabalar = new List<Araba>();
+                tumArabalar.AddRange(_kiradakiArabaListesi);
+                tumArabalar.AddRange(_galeridekiArabaListesi);
+                return tumArabalar;
+            }
+        }
+
+
+        public List<Araba> kiradakiArabaListesi => _kiradakiArabaListesi;
+        public List<Araba> galeridekiArabaListesi => _galeridekiArabaListesi;
+
 
         public void TumArabalariListele()
         {
             Console.WriteLine("\nPlaka".PadRight(11)+"Marka".PadRight(10)+"K.Bedeli".PadRight(12)+"Araba Tipi".PadRight(16)+"K. Sayısı".PadRight(15)+                "Durum".PadRight(10));
             Console.WriteLine("-----------------------------------------------------------------------");
-            foreach (var item in _tumArabaListesi)
+            foreach (var item in tumArabaListesi)
             {
-                Console.WriteLine(item.Plaka.PadRight(10) + item.Marka.PadRight(10) + item.KiralamaBedeli.ToString().PadRight(12) + item.ArabaTipi.ToString().PadRight(10));
+                Console.WriteLine(item.Plaka.PadRight(10) + item.Marka.PadRight(10) + item.KiralamaBedeli.ToString().PadRight(12) + item.ArabaTipi.ToString().PadRight(16) + item.KiralamaSayisi.ToString().PadRight(15) + item.ArabaDurumu.ToString().PadRight(10) );
             }
+            Console.WriteLine();
         }
         public void GaleridekiArabalariListele()
         {
             Console.WriteLine("\nPlaka".PadRight(11) + "Marka".PadRight(10) + "K.Bedeli".PadRight(12) + "Araba Tipi".PadRight(16) + "K. Sayısı".PadRight(15) + "Durum".PadRight(10));
             Console.WriteLine("-----------------------------------------------------------------------");
-            foreach (var item in _galeridekiArabaListesi)
+            foreach (var item in galeridekiArabaListesi)
             {
-                Console.WriteLine(item.Plaka.PadRight(10) + item.Marka.PadRight(10) + item.KiralamaBedeli.ToString().PadRight(12) + item.ArabaTipi.ToString().PadRight(10));
+                Console.WriteLine(item.Plaka.PadRight(10) + item.Marka.PadRight(10) + item.KiralamaBedeli.ToString().PadRight(12) + item.ArabaTipi.ToString().PadRight(16) + item.KiralamaSayisi.ToString().PadRight(15) + item.ArabaDurumu.ToString().PadRight(10));
             }
+            Console.WriteLine();
         }
         public void KiradakiArabalariListele()
         {
             Console.WriteLine("\nPlaka".PadRight(11) + "Marka".PadRight(10) + "K.Bedeli".PadRight(12) + "Araba Tipi".PadRight(16) + "K. Sayısı".PadRight(15) + "Durum".PadRight(10));
             Console.WriteLine("-----------------------------------------------------------------------");
-            foreach (var item in _kiradakiArabaListesi)
+            foreach (var item in kiradakiArabaListesi)
             {
-                Console.WriteLine(item.Plaka.PadRight(10) + item.Marka.PadRight(10) + item.KiralamaBedeli.ToString().PadRight(12) + item.ArabaTipi.ToString().PadRight(10));
+                Console.WriteLine(item.Plaka.PadRight(10) + item.Marka.PadRight(10) + item.KiralamaBedeli.ToString().PadRight(12) + item.ArabaTipi.ToString().PadRight(16) + item.KiralamaSayisi.ToString().PadRight(15) + item.ArabaDurumu.ToString().PadRight(10));
             }
+            Console.WriteLine();
         }
         public void GaleriArabaEkle(Araba araba)
         {
-            _tumArabaListesi.Add(araba);
+            galeridekiArabaListesi.Add(araba);
         }
         public void GaleriArabaSil(Araba araba)
         {
-            _tumArabaListesi.Remove(araba);
+            galeridekiArabaListesi.Remove(araba);
+        }
+        public void KirayaVer(Araba araba)
+        {
+            galeridekiArabaListesi.Remove(araba);
+            kiradakiArabaListesi.Add(araba);
+            araba.ArabaDurumu = Araba.ArabaDurum.Kirada;
+            araba.KiralamaSayisi++;
+        }
+        public void KiradanAl(Araba araba)
+        {
+            kiradakiArabaListesi.Remove(araba);
+            galeridekiArabaListesi.Add(araba);
+            araba.ArabaDurumu = Araba.ArabaDurum.Galeride;
         }
 
         public void SahteVeriEkle()

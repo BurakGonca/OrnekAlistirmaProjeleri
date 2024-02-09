@@ -3,15 +3,15 @@ using System.Runtime.CompilerServices;
 
 namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
 {
-    
+
     internal class Program
     {
         static Galeri galeri = new Galeri();
         static void Main(string[] args)
         {
-           
+
             Calistir();
-            
+
         }
         public static void Calistir()
         {
@@ -68,7 +68,7 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
                         break;
                 }
             }
-            
+
 
         }
 
@@ -87,11 +87,11 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
         private static void ArabaEkle()
         {
             Console.Write("Plaka: ");
-            string plaka  = Console.ReadLine();
+            string plaka = Console.ReadLine();
             Console.Write("\nMarka: ");
-            string marka= Console.ReadLine();
+            string marka = Console.ReadLine();
             Console.Write("\nKiralama Bedeli: ");
-            int kiralamaBedeli=int.Parse(Console.ReadLine());
+            int kiralamaBedeli = int.Parse(Console.ReadLine());
 
             Console.WriteLine("Araba Tipi (1: SUV, 2: Hatchback, 3: Sedan): ");
             byte secim = byte.Parse(Console.ReadLine());
@@ -111,8 +111,8 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
                     Console.WriteLine("Yanlis Araba Tipi Secimi Yaptiniz.");
                     break;
             }
-            
-            Araba yeniAraba = new Araba(plaka,marka,kiralamaBedeli,arabaTipi);
+
+            Araba yeniAraba = new Araba(plaka, marka, kiralamaBedeli, arabaTipi);
             galeri.GaleriArabaEkle(yeniAraba);
 
         }
@@ -134,8 +134,37 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
         }
         private static void ArabaKirala()
         {
-           
+            Console.WriteLine("-Araba Kirala-");
+            Console.Write("\nKiralanacak arabanın plakası: ");
+            string plaka = Console.ReadLine();
+
+            Araba kiralanacakAraba = null;
+            foreach (Araba araba in galeri.tumArabaListesi)
+            {
+                if (plaka == araba.Plaka)
+                {
+                    kiralanacakAraba = araba;
+                    break;
+                }
+            }
+
+            if (kiralanacakAraba != null)
+            {
+                Console.WriteLine("Plaka eşleşti");
+                if (kiralanacakAraba.ArabaDurumu == Araba.ArabaDurum.Galeride)
+                {
+                    Console.Write("\nKiralanma süresi: ");
+                    sbyte kiraSuresi = sbyte.Parse(Console.ReadLine());
+                    Console.WriteLine($"\n{kiralanacakAraba.Plaka} plakalı araba {kiraSuresi} saatliğine kiralandı.");
+                    galeri.KirayaVer(kiralanacakAraba);
+                }
+                else
+                    Console.WriteLine("Araba şu anda kirada. Farklı araba seçiniz.");
+            }
+            else
+                Console.WriteLine("Araba bulunamadı!");
         }
+
         private static void Menu()
         {
             Console.WriteLine("1 - Araba Kirala(K)");
@@ -156,11 +185,11 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
             {
                 Console.Write("\nSeciminiz: ");
                 secim = Console.ReadLine().ToUpper();
-                if (secim=="1" || secim == "2" || secim == "3" || secim == "4" || secim == "5"
+                if (secim == "1" || secim == "2" || secim == "3" || secim == "4" || secim == "5"
                     || secim == "6" || secim == "7" || secim == "8" || secim == "9" || secim == "K"
                     || secim == "T" || secim == "R" || secim == "M" || secim == "A" || secim == "I"
-                    || secim == "Y" || secim == "S" || secim == "G" || secim == "X" || secim == "10") break;
-
+                    || secim == "Y" || secim == "S" || secim == "G" || secim == "X" || secim == "10")
+                    break;
                 else
                 {
                     Console.WriteLine("\nHatalı işlem gerçekleştirildi. Tekrar deneyin.");

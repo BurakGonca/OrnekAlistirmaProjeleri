@@ -11,6 +11,7 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
         private string _Plaka;
         private string _Marka;
         private int _KiralamaBedeli;
+        private ushort _KiralamaSayisi;
         private ArabaTip _ArabaTipi;
 
         public Araba(string plaka, string marka, int kiralamaBedeli, ArabaTip arabaTipi)
@@ -19,29 +20,29 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
             _Marka = marka;
             _KiralamaBedeli = kiralamaBedeli;
             _ArabaTipi = arabaTipi;
+            ArabaDurumu = ArabaDurum.Galeride;
+            _KiralamaSayisi = 0;
         }
 
-        public int KiralamaBedeli => _KiralamaBedeli;
         public string Plaka => _Plaka;
         public string Marka => _Marka;
+        public int KiralamaBedeli => _KiralamaBedeli;
+        public ushort KiralamaSayisi { get; set; }
         public ArabaTip ArabaTipi => _ArabaTipi;
+        public ArabaDurum ArabaDurumu { get; set; }
         public enum ArabaTip
         {
             SUV = 1,
             Hatchback,
             Sedan
         }
-
-        //henüz kullanmadım
-        public Araba VeriEkle(string sahtePlaka, string sahteMarka, int sahteKiralamaBedeli, ArabaTip sahteArabaTipi)
+        public enum ArabaDurum
         {
-            string plaka = sahtePlaka;
-            string marka = sahteMarka;
-            int kiralamaBedeli = sahteKiralamaBedeli;
-            ArabaTip arabaTipi = sahteArabaTipi;
-            Araba araba = new Araba(plaka,marka, kiralamaBedeli,arabaTipi);
-            return araba;
+            Kirada,
+            Galeride
         }
+        
+        
 
     }
 }
