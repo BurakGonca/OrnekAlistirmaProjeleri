@@ -63,7 +63,6 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
                         kontrol = false;
                         break;
                     default:
-
                         Console.WriteLine("\nHatalı işlem gerçekleştirildi. Tekrar deneyin.");
                         break;
                 }
@@ -112,7 +111,7 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
         public static int ToplamKiralamaSuresiGetir()
         {
             int toplamSure = 0;
-            foreach (var item in galeri.kiradakiArabaListesi)
+            foreach (var item in galeri.tumArabaListesi)
             {
                 toplamSure += item.KiralamaSuresi;
             }
@@ -121,7 +120,7 @@ namespace OtoGaleri_OOP_OrnekKonsolUygulamasi
         private static decimal CiroGetir()
         {
             decimal ciro = 0;
-            foreach (var item in galeri.kiradakiArabaListesi)
+            foreach (var item in galeri.tumArabaListesi)
             {
                 ciro += (item.KiralamaSuresi * item.KiralamaBedeli);
             }
